@@ -13,7 +13,7 @@ GO
 CREATE PROCEDURE HumanResources.usp_GetGeneralEmployee
 	@DepartmentId INT = NULL
 AS
-	SELECT COUNT (p.FirstName) AS CantidadEmpleados 
+	SELECT COUNT (d.DepartmentID) AS CantidadEmpleados 
 	FROM Person.Person p
 	INNER JOIN HumanResources.Employee e ON p.BusinessEntityID = e.BusinessEntityID
 	INNER JOIN HumanResources.EmployeeDepartmentHistory h ON e.BusinessEntityID = h.BusinessEntityID
