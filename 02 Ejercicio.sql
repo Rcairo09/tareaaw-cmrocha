@@ -7,8 +7,12 @@ GO
 
 CREATE VIEW Production.ProductosCategoria
 AS
-SELECT p.ProductID, p.Name AS Producto, s.Name AS Subcategoria, c.Name AS Categoria, m.Name AS Modelo
-FROM Production.Product p, Production.ProductSubcategory s, Production.ProductCategory c, Production.ProductModel m
+SELECT p.ProductID, p.Name AS Producto, p.ProductModelID, m.Name AS Modelo, s.ProductSubcategoryID, s.Name AS Subcategoria, 
+c.ProductCategoryID, c.Name AS Categoria 
+FROM Production.Product p
+FULL JOIN Production.ProductModel m ON p.ProductModelID = m.ProductModelID
+LEFT JOIN Production.ProductSubcategory s ON s.ProductSubcategoryID = p.ProductSubcategoryID
+LEFT JOIN Production.ProductCategory c ON c.ProductCategoryID = s.ProductCategoryID
 GO
 
 SELECT *
