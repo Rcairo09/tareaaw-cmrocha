@@ -30,7 +30,7 @@ AS
 		FROM Sales.SalesOrderDetail s
 		INNER JOIN Production.Product p ON S.ProductID = p.ProductID
 		INNER JOIN Sales.SalesOrderHeader h ON s.SalesOrderID = h.SalesOrderID
-		WHERE DATEPART(MONTH,h.OrderDate) = DATEPART(MONTH, GETDATE())
+		WHERE @StartDate= DATEADD(DAY,1,EOMONTH(GETDATE(),-1)) AND  @EndDate = EOMONTH(GETDATE())
 GO
 
 EXEC Sales.usp_Ventas '2006-01-10', '2012-03-10'

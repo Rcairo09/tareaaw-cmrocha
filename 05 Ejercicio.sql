@@ -1,3 +1,6 @@
+USE AdventureWorks2019
+GO
+
 IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
@@ -21,3 +24,4 @@ GO
 
 EXEC HumanResources.usp_GetBirthDate 
 
+v
